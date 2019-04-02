@@ -14,7 +14,21 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  if a == 0 || b == 0 || c == 0
+    raise TriangleError, "Triangle sides can't measure 0"
+  elsif a.negative? || b.negative? || c.negative?
+    raise TriangleError, "Triangles don't have negative sides"
+  elsif (a + b) <= c || (a+c) <= b
+    raise TriangleError, "The sum of the first 2 sides should be MORE than the third side"
+  end
+
+  if a == b && a == c
+    :equilateral
+  elsif a == b || a == c || b == c
+    :isosceles
+  else
+    :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
